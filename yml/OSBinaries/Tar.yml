@@ -1,0 +1,39 @@
+---
+Name: tar.exe
+Description: Archive utility for creating and extracting tar archives
+Author: LOLBins Project
+Created: 2026-01-16
+Commands:
+  - Command: tar.exe -cf archive.tar C:\sensitive\*.txt
+    Description: Create a tar archive containing files
+    Usecase: Collect and package sensitive files for exfiltration
+    Category: Copy
+    Privileges: User
+    MitreID: T1560.001
+    OperatingSystem: Windows 10 1809+, Windows 11
+  - Command: tar.exe -xf archive.tar -C C:\temp\
+    Description: Extract files from a tar archive
+    Usecase: Extract payloads or tools from archives
+    Category: Execute
+    Privileges: User
+    MitreID: T1140
+    OperatingSystem: Windows 10 1809+, Windows 11
+  - Command: tar.exe -czf output.tar.gz C:\data\
+    Description: Compress and archive directory
+    Usecase: Compress data for staging before exfiltration
+    Category: Copy
+    Privileges: User
+    MitreID: T1560.001
+    OperatingSystem: Windows 10 1809+, Windows 11
+Full_Path:
+  - Path: C:\Windows\System32\tar.exe
+Detection:
+  - IOC: tar.exe creating archives of sensitive directories
+  - IOC: tar.exe extracting archives to unusual locations
+  - IOC: tar.exe spawned from suspicious parent processes
+Resources:
+  - Link: https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tar
+  - Link: https://attack.mitre.org/techniques/T1560/001/
+Acknowledgement:
+  - Person: Microsoft
+  - Person: libarchive project

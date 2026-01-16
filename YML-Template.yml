@@ -1,0 +1,44 @@
+---
+Name: Binary.exe
+Description: Brief description of what this binary does normally
+Aliases:  # Optional field if any common aliases exist
+  - Alias: Binary64.exe  # For example, different architecture versions
+Author: Your Name
+Created: YYYY-MM-DD  # Date you created this documentation
+Commands:
+  - Command: binary.exe --malicious-flag argument
+    Description: Detailed description of what this command does
+    Usecase: Explain the use case for security testing
+    Category: Execute  # Choose from: Execute, Download, Upload, Compile, Copy, Persistence, UAC Bypass, Credentials, Recon, AWL Bypass, Encode, Decode, ADS
+    Privileges: User  # or Administrator/SYSTEM
+    MitreID: T1055  # MITRE ATT&CK Technique ID
+    OperatingSystem: Windows 10, Windows 11  # Specify applicable OS versions
+    Tags:
+      - Key1: Value1  # Optional field for additional metadata
+  - Command: binary.exe --second-technique
+    Description: Description of the second technique
+    Usecase: Another use case
+    Category: Download
+    Privileges: User
+    MitreID: T1105
+    OperatingSystem: Windows 10, Windows 11
+Full_Path:
+  - Path: C:\Windows\System32\binary.exe
+  - Path: C:\Windows\SysWOW64\binary.exe
+Code_Sample:
+  - Code: https://example.com/sample-code.txt
+Detection:
+  - IOC: Binary.exe creating unusual network connections
+  - IOC: Binary.exe writing to suspicious locations
+  - Sigma: https://example.com/sigma-rule.yml
+  - Elastic: https://example.com/elastic-rule.toml
+  - Splunk: https://example.com/splunk-detection.yml
+  - Analysis: https://example.com/blog-post-analysis
+Resources:
+  - Link: https://example.com/research-paper
+  - Link: https://twitter.com/researcher/status/123456
+Acknowledgement:
+  - Person: Researcher Name
+    Handle: '@twitter_handle'
+  - Person: Another Researcher
+    Handle: '@another_handle'

